@@ -1,0 +1,2 @@
+﻿"AlphaVantage" = "K5DKES5YXUANOPRG",
+"iex" = "pk_49cf9c313e514b1ebeea304dc0e2e4d2"
