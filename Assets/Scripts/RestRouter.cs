@@ -30,6 +30,36 @@ public class RestRouter :  MonoBehaviour
       
     }
 
+    public void GetQuote(string symbol)
+    {
+        string baseURL = "https://api.tdameritrade.com/v1/marketdata/";
+
+        string quotes = "/quotes";
+
+        StartCoroutine(ProcessRequest(baseURL + symbol + quotes));
+
+    }
+
+    private IEnumerator ProcessRequest(string uri)
+    {
+        using (UnityWebRequest request = UnityWebRequest.Get(uri))
+        {
+
+            yield return request.SendWebRequest();
+
+            if (request.isNetworkError)
+            {
+
+                Debug.Log(request.error);
+            }
+            else
+            {
+                JSONNode data = JSON.Parse(request.downloadHandler.text);
+
+                Debug.Log(data);
+            }
+        }
+    }
 
     private IEnumerator ProcessRequest(int quoteType, Ticker client, Agent caller, string uri)
     {

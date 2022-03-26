@@ -16,6 +16,8 @@ public class Ticker : MonoBehaviour
         agent = new Agent();
         agent.router = router;
         Time.fixedDeltaTime = 2;
+
+        router.GetQuote("F");
     }
 
     // Update is called once per frame
